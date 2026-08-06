@@ -404,9 +404,18 @@ if (yearSpan) {
 })();
 
 const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
+const feedbackModal = document.getElementById('feedbackModal');
+const closeFeedbackBtn = document.getElementById('closeFeedbackBtn');
+const feedbackTitle = document.getElementById('feedbackTitle');
+const feedbackMessage = document.getElementById('feedbackMessage');
+const feedbackIcon = document.getElementById('feedbackIcon');
 
-if (contactForm && formMessage) {
+if (contactForm && feedbackModal) {
+  closeFeedbackBtn.addEventListener('click', () => {
+    feedbackModal.classList.remove('show');
+    feedbackModal.setAttribute('aria-hidden', 'true');
+  });
+
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -417,15 +426,25 @@ if (contactForm && formMessage) {
 
     emailjs.sendForm("service_fbcybkl", "template_o0060df", this)
       .then(() => {
-        formMessage.textContent = "✅ Message sent successfully!";
-        formMessage.style.color = "green";
+        feedbackIcon.classList.remove('error');
+        feedbackIcon.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        feedbackTitle.textContent = "Message Sent!";
+        feedbackMessage.textContent = "Thank you for reaching out. I'll get back to you shortly.";
+        feedbackModal.classList.add('show');
+        feedbackModal.setAttribute('aria-hidden', 'false');
+        
         this.reset();
         submitBtn.textContent = originalBtnText;
         submitBtn.disabled = false;
       })
       .catch((err) => {
-        formMessage.textContent = "❌ Error sending message. Please try again!";
-        formMessage.style.color = "red";
+        feedbackIcon.classList.add('error');
+        feedbackIcon.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';
+        feedbackTitle.textContent = "Oops!";
+        feedbackMessage.textContent = "Something went wrong. Please try again.";
+        feedbackModal.classList.add('show');
+        feedbackModal.setAttribute('aria-hidden', 'false');
+        
         console.error(err);
         submitBtn.textContent = originalBtnText;
         submitBtn.disabled = false;
