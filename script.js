@@ -398,14 +398,38 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
+// 📧 EmailJS Integration
+(function() {
+  emailjs.init("YS8BjJ99YFaarQRiD"); 
+})();
+
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
 if (contactForm && formMessage) {
-  contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    formMessage.textContent = 'Thanks! Your message has been received. I will get back to you soon with the next step.';
-    contactForm.reset();
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    emailjs.sendForm("service_fbcybkl", "template_o0060df", this)
+      .then(() => {
+        formMessage.textContent = "✅ Message sent successfully!";
+        formMessage.style.color = "green";
+        this.reset();
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      })
+      .catch((err) => {
+        formMessage.textContent = "❌ Error sending message. Please try again!";
+        formMessage.style.color = "red";
+        console.error(err);
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+      });
   });
 }
 
