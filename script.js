@@ -400,7 +400,7 @@ if (yearSpan) {
 
 // 📧 EmailJS Integration
 (function() {
-  emailjs.init("YS8BjJ99YFaarQRiD"); 
+  emailjs.init("KQgrkRjLOc7mphsTD"); 
 })();
 
 const contactForm = document.getElementById('contactForm');
@@ -424,7 +424,7 @@ if (contactForm && feedbackModal) {
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
 
-    emailjs.sendForm("service_fbcybkl", "template_o0060df", this)
+    emailjs.sendForm("service_3hoxhp3", "template_037ylts", this)
       .then(() => {
         feedbackIcon.classList.remove('error');
         feedbackIcon.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
