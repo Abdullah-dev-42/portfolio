@@ -393,6 +393,29 @@ if (previewButtons.length && previewModal && previewModalTitle && closePreviewMo
   });
 }
 
+// FAQ Accordion
+const saasFaqItems = document.querySelectorAll('.saas-accordion-item');
+saasFaqItems.forEach(item => {
+  const button = item.querySelector('.saas-accordion-trigger');
+  button.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+    
+    // Close all others
+    saasFaqItems.forEach(otherItem => {
+      otherItem.classList.remove('active');
+      otherItem.querySelector('.saas-accordion-trigger').setAttribute('aria-expanded', 'false');
+      otherItem.querySelector('.saas-accordion-content').style.maxHeight = null;
+    });
+
+    if (!isActive) {
+      item.classList.add('active');
+      button.setAttribute('aria-expanded', 'true');
+      const answer = item.querySelector('.saas-accordion-content');
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+});
+
 const yearSpan = document.getElementById('year');
 if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();

@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-theme="light">
     <header class="hero" id="home">
       <nav class="navbar">
         <a class="logo" href="#home">Abdullah<span>Dev</span></a>
@@ -24,6 +24,7 @@
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#mobile">APK Demos</a>
+          <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode" aria-pressed="false">
             <span class="theme-text">Theme</span>
@@ -66,18 +67,18 @@
           </div>
         </div>
 
-        <div class="hero-card reveal hero-photo-card">
-          <img src="assets/images/portfolio_img.jpeg" alt="Abdullah profile" />
-          <div class="hero-card-body">
-            <h3>Abdullah</h3>
-            <p>Web, mobile, and product-focused developer with strong frontend, backend, and deployment skills.</p>
-            <ul>
-              <li>HTML, CSS, JavaScript</li>
-              <li>React, Node.js, SQL</li>
-              <li>Flutter, Firebase, API'S</li>
-              <li>Python, Artificial Intelligence</li>
-            </ul>
-            <div class="hero-badge">Ready for recruitment & freelance work</div>
+        <div class="hero-profile reveal">
+          <div class="profile-orbit-wrapper">
+            <div class="orbit-ring ring-1"></div>
+            <div class="orbit-ring ring-2"></div>
+            <div class="orbit-ring ring-3"></div>
+            <div class="profile-image-ring">
+              <img src="assets/images/portfolio_img.jpeg" alt="Abdullah profile" class="profile-img-round" />
+            </div>
+          </div>
+          <div class="profile-floating-info">
+            <div class="floating-badge top-badge">💻 Web & Mobile</div>
+            <div class="floating-badge bottom-badge">🚀 Frontend & Backend</div>
           </div>
         </div>
       </div>
@@ -89,15 +90,15 @@
           <p class="eyebrow">About Me</p>
           <h2>I build polished digital products that look sharp, feel smooth, and communicate value clearly.</h2>
         </div>
-        <div class="about-grid">
-          <article class="card reveal">
+        <div class="about-minimal">
+          <div class="about-block reveal">
             <h3>Who I Am</h3>
             <p>
               I’m a developer who cares about both visual quality and real-world usefulness. I enjoy turning
               ideas into products that feel premium, load fast, and are easy for users to trust.
             </p>
-          </article>
-          <article class="card reveal">
+          </div>
+          <div class="about-block reveal" style="animation-delay: 200ms;">
             <h3>What I Deliver</h3>
             <p>
               From landing pages and portfolios to web apps, dashboards, and mobile demos, I can help with
@@ -108,7 +109,7 @@
               <li>Responsive design for every screen size</li>
               <li>Clear communication and delivery mindset</li>
             </ul>
-          </article>
+          </div>
         </div>
       </section>
 
@@ -117,53 +118,66 @@
           <p class="eyebrow">Why recruiters notice my work</p>
           <h2>My portfolio is designed to communicate trust, clarity, and skill in seconds.</h2>
         </div>
-        <div class="impact-grid">
-          <article class="impact-card reveal">
-            <h3>Professional first impression</h3>
-            <p>The layout and copy are focused on the recruiter’s decision speed: clear value, quick scan, and polished visuals.</p>
-          </article>
-          <article class="impact-card reveal">
-            <h3>Skill proof, not just claims</h3>
-            <p>Each section highlights UX thinking, responsive behavior, and product presentation instead of vague descriptions.</p>
-          </article>
-          <article class="impact-card reveal">
-            <h3>Mobile + web versatility</h3>
-            <p>From landing pages to APK showcases, the portfolio presents a wider range of project thinking and production readiness.</p>
-          </article>
+        <div class="impact-bento">
+          <div class="impact-bento-item reveal">
+            <div class="impact-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <div class="impact-text">
+              <h3>Professional first impression</h3>
+              <p>The layout and copy are focused on the recruiter’s decision speed: clear value, quick scan, and polished visuals.</p>
+            </div>
+            <div class="bento-glow"></div>
+          </div>
+          <div class="impact-bento-item reveal" style="animation-delay: 150ms;">
+            <div class="impact-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            </div>
+            <div class="impact-text">
+              <h3>Skill proof, not just claims</h3>
+              <p>Each section highlights UX thinking, responsive behavior, and product presentation instead of vague descriptions.</p>
+            </div>
+            <div class="bento-glow"></div>
+          </div>
+          <div class="impact-bento-item reveal" style="animation-delay: 300ms;">
+            <div class="impact-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </div>
+            <div class="impact-text">
+              <h3>Mobile + web versatility</h3>
+              <p>From landing pages to APK showcases, the portfolio presents a wider range of project thinking and production readiness.</p>
+            </div>
+            <div class="bento-glow"></div>
+          </div>
         </div>
       </section>
 
-      <section class="section alt reveal" id="skills">
+      <section class="section reveal" id="skills">
         <div class="section-heading">
           <p class="eyebrow">Skills</p>
           <h2>Core strengths that help a product look professional and ship smoothly.</h2>
           <p class="section-note">I combine frontend polish, backend logic, and mobile thinking to build complete experiences.</p>
         </div>
-        <div class="skills-grid">
-          <article class="skill-card reveal">
-            <h3>Web Development</h3>
-            <p>Modern responsive websites and business web apps.</p>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Frontend</h3>
-            <p>Beautiful UI, smooth animations, and user-friendly interfaces.</p>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Backend</h3>
-            <p>REST APIs, authentication, server logic, and scalable systems.</p>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Mobile Development</h3>
-            <p>Cross-platform mobile apps with a clean, native feel.</p>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Database</h3>
-            <p>MySQL, and Firebase-based data storage solutions.</p>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Deployment</h3>
-            <p>Hosting, performance optimization, and production-ready builds.</p>
-          </article>
+        <div class="skills-marquee-wrapper reveal">
+          <div class="skills-marquee">
+            <div class="skill-pill"><span class="skill-icon">🌐</span><span>Web Development</span></div>
+            <div class="skill-pill"><span class="skill-icon">🎨</span><span>Frontend UI/UX</span></div>
+            <div class="skill-pill"><span class="skill-icon">⚙️</span><span>Backend Systems</span></div>
+            <div class="skill-pill"><span class="skill-icon">📱</span><span>Mobile & Flutter</span></div>
+            <div class="skill-pill"><span class="skill-icon">🗄️</span><span>Database Arch</span></div>
+            <div class="skill-pill"><span class="skill-icon">🚀</span><span>Deployment & Cloud</span></div>
+            <div class="skill-pill"><span class="skill-icon">⚛️</span><span>React & Node.js</span></div>
+            <div class="skill-pill"><span class="skill-icon">🤖</span><span>AI & Python</span></div>
+            <!-- Duplicate for infinite scroll loop -->
+            <div class="skill-pill"><span class="skill-icon">🌐</span><span>Web Development</span></div>
+            <div class="skill-pill"><span class="skill-icon">🎨</span><span>Frontend UI/UX</span></div>
+            <div class="skill-pill"><span class="skill-icon">⚙️</span><span>Backend Systems</span></div>
+            <div class="skill-pill"><span class="skill-icon">📱</span><span>Mobile & Flutter</span></div>
+            <div class="skill-pill"><span class="skill-icon">🗄️</span><span>Database Arch</span></div>
+            <div class="skill-pill"><span class="skill-icon">🚀</span><span>Deployment & Cloud</span></div>
+            <div class="skill-pill"><span class="skill-icon">⚛️</span><span>React & Node.js</span></div>
+            <div class="skill-pill"><span class="skill-icon">🤖</span><span>AI & Python</span></div>
+          </div>
         </div>
       </section>
 
@@ -215,30 +229,6 @@
         </div>
       </section>
 
-      <section class="section alt reveal" id="workflow">
-        <div class="section-heading">
-          <p class="eyebrow">How I Work</p>
-          <h2>From concept to polished delivery, I focus on user clarity and real output.</h2>
-        </div>
-        <div class="workflow-grid">
-          <article class="workflow-step reveal">
-            <span>01</span>
-            <h3>Understand the goal</h3>
-            <p>I first focus on the audience, conversion path, and what the user should instantly understand.</p>
-          </article>
-          <article class="workflow-step reveal">
-            <span>02</span>
-            <h3>Craft the experience</h3>
-            <p>I build the UI with structure, modern spacing, and smooth interaction patterns that feel professional.</p>
-          </article>
-          <article class="workflow-step reveal">
-            <span>03</span>
-            <h3>Ship with confidence</h3>
-            <p>Each deliverable is made deployment-ready, responsive, and easy to present to clients or recruiters.</p>
-          </article>
-        </div>
-      </section>
-
       <section class="section alt reveal" id="mobile">
         <div class="section-heading">
           <p class="eyebrow">FYP APK Demo</p>
@@ -248,9 +238,12 @@
             internships, CV creation, career guidance, and recruiter-student interaction.
           </p>
         </div>
-        <div class="project-grid">
-          <article class="project-card reveal">
-            <h3>Career Bridge APK</h3>
+        <div class="mobile-grid">
+          <article class="mobile-card reveal">
+            <div class="mobile-card-header">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              <h3>Career Bridge APK</h3>
+            </div>
             <p>
               Developed as a Final Year Project to address practical student career and employability challenges.
               The app focuses on jobs, internships, CV support, and career guidance.
@@ -262,11 +255,14 @@
             </div>
             <div class="project-actions">
               <a href="https://github.com/Abdullah-dev-42/portfolio/releases/download/v1.0/career_bridge.apk" class="mini-btn apk-download" data-apk="https://github.com/Abdullah-dev-42/portfolio/releases/download/v1.0/career_bridge.apk" target="_blank" rel="noreferrer">Download APK</a>
-              <a href="#" class="mini-btn ghost preview-flow" data-preview-app="careerBridge" data-preview-title="Career Bridge">Preview Flow</a>
+              <button type="button" class="mini-btn ghost preview-flow" data-preview-app="careerBridge" data-preview-title="Career Bridge">Preview Flow</button>
             </div>
           </article>
-          <article class="project-card reveal">
-            <h3>Factory APK</h3>
+          <article class="mobile-card reveal">
+            <div class="mobile-card-header">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              <h3>Factory APK</h3>
+            </div>
             <p>
               A companion mobile demo showcasing practical project delivery, workflow clarity, and mobile
               presentation in a recruiter-friendly format.
@@ -278,66 +274,180 @@
             </div>
             <div class="project-actions">
               <a href="https://github.com/Abdullah-dev-42/portfolio/releases/download/v1.0/factory.apk" class="mini-btn apk-download" data-apk="https://github.com/Abdullah-dev-42/portfolio/releases/download/v1.0/factory.apk" target="_blank" rel="noreferrer">Download APK</a>
-              <a href="#" class="mini-btn ghost preview-flow" data-preview-app="factory" data-preview-title="Factory">Preview Flow</a>
+              <button type="button" class="mini-btn ghost preview-flow" data-preview-app="factory" data-preview-title="Factory">Preview Flow</button>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section alt reveal">
-        <div class="section-heading">
-          <p class="eyebrow">Why Hire Me</p>
-          <h2>Clean code, strong communication, and results-focused development.</h2>
-        </div>
-        <div class="about-grid">
-          <article class="card reveal">
-            <h3>Reliable Delivery</h3>
-            <p>I focus on quality, deadlines, and making sure the final product is easy to maintain and present professionally.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Job-Ready Mindset</h3>
-            <p>I build portfolios and projects that reflect real industry expectations, better user outcomes, and stronger hiring standards.</p>
-          </article>
+      <section class="section saas-faq-section reveal" id="faq">
+        <div class="saas-faq-container">
+          <div class="saas-faq-left">
+            <div class="sticky-wrapper">
+              <span class="eyebrow">Curious Minds</span>
+              <h2>Frequently Asked Questions</h2>
+              <p>Everything you need to know about my process, availability, and how we can work together.</p>
+              <a href="#contact" class="faq-contact-link">Still have questions? <span>→</span></a>
+            </div>
+          </div>
+          
+          <div class="saas-faq-right">
+            <div class="saas-accordion-list">
+              <!-- Item 1 -->
+              <div class="saas-accordion-item">
+                <button class="saas-accordion-trigger" aria-expanded="false">
+                  <span class="saas-accordion-title">What makes your development approach different?</span>
+                  <span class="saas-accordion-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </span>
+                </button>
+                <div class="saas-accordion-content">
+                  <p>I don't just write code; I focus on the final product experience. I bridge the gap between design and technical execution, ensuring the product is polished, responsive, and ready for real users.</p>
+                </div>
+              </div>
+              
+              <!-- Item 2 -->
+              <div class="saas-accordion-item">
+                <button class="saas-accordion-trigger" aria-expanded="false">
+                  <span class="saas-accordion-title">Which tech stack do you specialize in?</span>
+                  <span class="saas-accordion-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </span>
+                </button>
+                <div class="saas-accordion-content">
+                  <p>My core stack revolves around React, Node.js, and modern CSS for the web, along with Flutter for mobile applications. I prioritize vanilla UI systems and custom architectures optimized for scale.</p>
+                </div>
+              </div>
+              
+              <!-- Item 3 -->
+              <div class="saas-accordion-item">
+                <button class="saas-accordion-trigger" aria-expanded="false">
+                  <span class="saas-accordion-title">Are you available for remote or full-time roles?</span>
+                  <span class="saas-accordion-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </span>
+                </button>
+                <div class="saas-accordion-content">
+                  <p>Absolutely. I am currently available for freelance projects, internships, and full-time positions. I thrive in remote environments and asynchronous communication setups.</p>
+                </div>
+              </div>
+
+              <!-- Item 4 -->
+              <div class="saas-accordion-item">
+                <button class="saas-accordion-trigger" aria-expanded="false">
+                  <span class="saas-accordion-title">How do you manage deadlines and deliverables?</span>
+                  <span class="saas-accordion-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </span>
+                </button>
+                <div class="saas-accordion-content">
+                  <p>Communication is the foundation. I provide clear timelines upfront, maintain a 24-hour response cycle, and deliver portfolio-ready milestones so you always know the project status.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="section reveal" id="contact">
         <div class="contact-card">
-          <p class="eyebrow">Contact</p>
-          <h2>Let’s build something that feels sharp, useful, and ready for real users.</h2>
-          <p>
-            Open for freelance work, internship opportunities, full-time roles, and remote collaborations.
-            If you want a developer who can move from idea to polished product, I’d love to talk.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:hello@abdullah.dev">Email Me</a>
-            <a class="btn btn-secondary" href="assets/cv/Abdullah_Tariq_CV.pdf" download>Download CV</a>
+          <div class="figma-contact-layout">
+            <div class="figma-contact-info">
+              <h2 class="figma-contact-title">Ready to<br>add <span>value</span><br>to your team</h2>
+              <div class="figma-contact-details">
+                <div class="figma-detail-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>  abdullahtariq.nns@gmail.com</span>
+                </div>
+                <div class="figma-detail-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <span>Available for Interviews</span>
+                </div>
+                <div class="figma-detail-item">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  <span>Remote / Relocation</span>
+                </div>
+              </div>
+              <div class="figma-social-links">
+                <a href="https://www.linkedin.com/in/abdullah-tariq-374173322" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="https://github.com/Abdullah-966" target="_blank" rel="noreferrer" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+              </div>
+            </div>
+            
+            <div class="figma-contact-form-wrapper">
+              <form class="figma-contact-form" id="contactForm">
+                <div class="figma-interest-section">
+                  <p>Opportunity Type:</p>
+                  <div class="figma-pills">
+                    <button type="button" class="figma-pill active">Full-Time Role</button>
+                    <button type="button" class="figma-pill">Contract / Freelance</button>
+                    <button type="button" class="figma-pill">Technical Interview</button>
+                    <button type="button" class="figma-pill">Internship</button>
+                    <button type="button" class="figma-pill">Other</button>
+                  </div>
+                </div>
+                
+                <div class="figma-input-group">
+                  <input type="text" id="name" name="name" required placeholder=" " />
+                  <label for="name">Your name</label>
+                  <span class="figma-underline"></span>
+                </div>
+                <div class="figma-input-group">
+                  <input type="email" id="email" name="email" required placeholder=" " />
+                  <label for="email">Your email</label>
+                  <span class="figma-underline"></span>
+                </div>
+                <div class="figma-input-group">
+                  <textarea id="message" name="message" rows="2" required placeholder=" "></textarea>
+                  <label for="message">Your message</label>
+                  <span class="figma-underline"></span>
+                </div>
+                
+                <button class="figma-submit-btn" type="submit">Send message</button>
+              </form>
+              <p class="form-message" id="formMessage"></p>
+            </div>
           </div>
-          <form class="contact-form" id="contactForm">
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <textarea name="message" rows="4" placeholder="Write your message" required></textarea>
-            <button class="btn btn-primary" type="submit">Send Message</button>
-          </form>
-          <p class="form-message" id="formMessage"></p>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="footer-content">
-        <div>
-          <p class="footer-title">AbdullahDev</p>
-          <p>Building polished, practical digital products for modern brands and hiring teams.</p>
+      <div class="footer-wrapper">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <a class="footer-logo" href="#home">Abdullah<span>Dev</span></a>
+            <p>Building polished, practical digital products for modern brands and hiring teams with a focus on UI/UX and scalable architectures.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <div class="footer-links">
+              <a href="#about">About</a>
+              <a href="#projects">Projects</a>
+              <a href="#skills">Skills</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Contact Info</h4>
+            <div class="footer-links">
+              <a href="mailto:abdullahtariq.nns@gmail.com">abdullahtariq.nns@gmail.com</a>
+              <a href="assets/cv/Abdullah_Tariq_CV.pdf" download>Download CV</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Social Connect</h4>
+            <div class="footer-links">
+              <a href="https://github.com/Abdullah-966" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/abdullah-tariq-374173322?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
         </div>
-        <div class="footer-links">
-          <a href="mailto:hello@abdullah.dev">Email</a>
-          <a href="https://github.com/abdullah" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://linkedin.com/in/abdullah" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="assets/cv/abdullah_cv.pdf" download>CV</a>
+        <div class="copyright">
+          <p>© <span id="year"></span> AbdullahDev. All rights reserved.</p>
+          <p>Empowering minds, nurturing products 🌟</p>
         </div>
       </div>
-      <p class="copyright">© <span id="year"></span> AbdullahDev. All rights reserved.</p>
     </footer>
 
     <div class="apk-modal" id="apkModal" aria-hidden="true">
