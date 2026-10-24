@@ -41,6 +41,18 @@ const confirmApkDownload = document.getElementById('confirmApkDownload');
 const cancelApkDownload = document.getElementById('cancelApkDownload');
 const previewButtons = document.querySelectorAll('.preview-flow');
 const previewModal = document.getElementById('previewModal');
+let apkReturnFocus = null;
+let previewReturnFocus = null;
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+
+  if (apkModal?.classList.contains('show')) {
+    cancelApkDownload?.click();
+  } else if (previewModal?.classList.contains('show')) {
+    closePreviewModal?.click();
+  }
+});
 const previewModalTitle = document.getElementById('previewModalTitle');
 const closePreviewModal = document.getElementById('closePreviewModal');
 const previewActiveImage = document.getElementById('previewActiveImage');
@@ -59,63 +71,63 @@ const previewCatalog = {
       {
         key: 'sign-up',
         title: 'Create Student Account',
-        description: 'Signup screen for a new student account with role tabs, full name, email, password, and Sign Up CTA.',
+        description: 'Student sign-up interface with role selection and account information fields.',
         image: 'sign-up.jpeg',
         darkImage: 'sign-up_dark.jpeg'
       },
       {
         key: 'login',
         title: 'Student Login',
-        description: 'Login screen for returning students using email and password with Google and GitHub sign-in options.',
+        description: 'Login interface with email and password fields and social sign-in buttons.',
         image: 'login.jpeg',
         darkImage: 'login_dark.jpeg'
       },
       {
         key: 'dashboard',
         title: 'Dashboard',
-        description: 'Dashboard summary showing total users, reports, shadow bans, and blacklisted accounts.',
+        description: 'Admin dashboard screen with overview cards and navigation.',
         image: 'admin-dashboard.jpeg',
         darkImage: 'admin-dashboard_dark.jpeg'
       },
       {
         key: 'jobs',
         title: 'Jobs & Internships',
-        description: 'Jobs and internship listing board with filters, opportunity cards, and structured recruiter-facing sections.',
+        description: 'Jobs and internship listings with opportunity cards and visible search or filter controls.',
         image: 'job-listing.jpeg',
         darkImage: 'job-listing_dark.jpeg'
       },
       {
         key: 'cv-optimizer',
-        title: 'AI CV Optimizer',
-        description: 'AI CV builder page where the user pastes a job description and generates a tailored CV.',
+        title: 'CV Tools Interface',
+        description: 'CV tools screen showing fields for CV details and a job description; this preview does not verify the underlying generation workflow.',
         image: 'cv-optimizer.jpeg',
         darkImage: 'cv-optimizer_dark.jpeg'
       },
       {
         key: 'chat-screen',
         title: 'Recruiter Connect',
-        description: 'Messaging and recruiter communication center for candidate outreach and quick follow-up.',
+        description: 'Messaging interface layout with conversation and message areas.',
         image: 'chat-screen.jpeg',
         darkImage: 'chat-screen_dark.jpeg'
       },
       {
         key: 'internships',
         title: 'Internships',
-        description: 'Internship marketplace page with search, sorting chips, and a premium opportunity card layout.',
+        description: 'Internship listings screen with search controls and opportunity cards.',
         image: 'internships.jpeg',
         darkImage: 'internships_dark.jpeg'
       },
       {
         key: 'applicants-dashboard',
         title: 'Applicants Dashboard',
-        description: 'Applicants dashboard with progress, evidence, and evaluation signals for real recruiter use.',
+        description: 'Applicant dashboard interface with progress and evidence sections.',
         image: 'appplicants-dashboard.jpeg',
         darkImage: 'applicants-dashboard_dark.jpeg'
       },
       {
         key: 'applicants-profile',
         title: 'Applicant Profile',
-        description: 'Candidate profile summary highlighting readiness, growth score, and skill strengths.',
+        description: 'Applicant profile screen with profile details and skill sections.',
         image: 'applicants-profile.jpeg',
         darkImage: 'applicants-profile_dark.jpeg'
       },
@@ -129,21 +141,21 @@ const previewCatalog = {
       {
         key: 'applicants-assessment',
         title: 'Applicant Assessment',
-        description: 'Assessment view where the user can review talent readiness and evaluation progress.',
+        description: 'Applicant assessment interface with evaluation and progress sections.',
         image: 'applicants-assessment.jpeg',
         darkImage: 'applicants-assessment_dark.jpeg'
       },
       {
         key: 'applicants-technical-evidence',
         title: 'Technical Evidence',
-        description: 'Evidence and project proof section presented in a clean, recruiter-friendly evidence card format.',
+        description: 'Technical evidence screen with project and evidence cards.',
         image: 'applicants-technical-evidence.jpeg',
         darkImage: 'applicants-technical-evidence_dark.jpeg'
       },
       {
         key: 'applicants-verified_gallery',
         title: 'Verified Gallery',
-        description: 'Verified asset gallery that showcases concrete portfolio proofs with a clear evidence header.',
+        description: 'Applicant gallery screen showing portfolio or evidence items.',
         image: 'applicants-verfied_gallery.jpeg',
         darkImage: 'applicants-verified_gallery_dark.jpeg'
       }
@@ -156,91 +168,91 @@ const previewCatalog = {
       {
         key: 'login',
         title: 'Login',
-        description: 'Login screen for factory users to securely access their mobile workspace and account workflow.',
+        description: 'Login screen layout for a factory mobile app.',
         image: 'login.jpeg',
         darkImage: 'login_dark.jpeg'
       },
       {
         key: 'dashboard',
         title: 'Dashboard',
-        description: 'Main dashboard with a compact operational summary and quick actions for daily management.',
+        description: 'Factory app dashboard layout with summary cards and navigation.',
         image: 'dashboard.jpeg',
         darkImage: 'dashboard_dark.jpeg'
       },
       {
         key: 'product',
         title: 'Product',
-        description: 'Product detail and item information screen showcasing inventory and product context.',
+        description: 'Product detail interface with item information.',
         image: 'product.jpeg',
         darkImage: 'product_dark.jpeg'
       },
       {
         key: 'product-listing',
         title: 'Product Listing',
-        description: 'Product list view for browsing catalog records, availability, and structured management fields.',
+        description: 'Product listing interface with visible item records.',
         image: 'product-listing.jpeg',
         darkImage: 'product-listing_dark.jpeg'
       },
       {
         key: 'order',
         title: 'Order',
-        description: 'Order detail screen designed for direct operational review and completion tracking.',
+        description: 'Order detail interface with order information.',
         image: 'order.jpeg',
         darkImage: 'order_dark.jpeg'
       },
       {
         key: 'order-listing',
         title: 'Order Listing',
-        description: 'Order listing screen showing records, status, and quick order visibility for users.',
+        description: 'Order listing interface with order records and status labels.',
         image: 'order-listing.jpeg',
         darkImage: 'order-listing_dark.jpeg'
       },
       {
         key: 'attendance',
         title: 'Attendance',
-        description: 'Attendance tracking screen for workforce or shift-based presence monitoring.',
+        description: 'Attendance screen interface.',
         image: 'attendance.jpeg',
         darkImage: 'attendance_dark.jpeg'
       },
       {
         key: 'attendance-listing',
         title: 'Attendance Listing',
-        description: 'Attendance table showing daily or recurring presence records in a structured mobile layout.',
+        description: 'Attendance listing interface with record rows.',
         image: 'attendance-listing.jpeg',
         darkImage: 'attendance-listing_dark.jpeg'
       },
       {
         key: 'customer',
         title: 'Customer',
-        description: 'Customer detail screen that centralizes account context and business-facing metadata.',
+        description: 'Customer detail interface with customer information.',
         image: 'customer.jpeg',
         darkImage: 'customer_dark.jpeg'
       },
       {
         key: 'customer-listing',
         title: 'Customer Listing',
-        description: 'Customer listing view for quick record lookup and operational information scanning.',
+        description: 'Customer listing interface with record rows.',
         image: 'customer-listing.jpeg',
         darkImage: 'customer-listing_dark.jpeg'
       },
       {
         key: 'log-expense',
         title: 'Log Expense',
-        description: 'Expense logging screen for inputting and reviewing practical operating costs.',
+        description: 'Expense entry interface.',
         image: 'log-expense.jpeg',
         darkImage: 'log-expense_dark.jpeg'
       },
       {
         key: 'log-expense-listing',
         title: 'Expense Listing',
-        description: 'Expense record listing with managed entries and clear operational activity visibility.',
+        description: 'Expense listing interface with record rows.',
         image: 'log-expense-listing.jpeg',
         darkImage: 'log-expense-listing_dark.jpeg'
       },
       {
         key: 'report',
         title: 'Report',
-        description: 'Factory report screen used to view structured data output and practical business insights.',
+        description: 'Factory report interface showing a data summary.',
         image: 'report.jpeg',
         darkImage: 'report_dark.jpeg'
       }
@@ -254,8 +266,10 @@ if (apkButtons.length && apkModal && confirmApkDownload && cancelApkDownload) {
     button.addEventListener('click', (event) => {
       event.preventDefault();
       pendingApkUrl = button.dataset.apk || '';
+      apkReturnFocus = button;
       apkModal.classList.add('show');
       apkModal.setAttribute('aria-hidden', 'false');
+      confirmApkDownload.focus();
     });
   });
 
@@ -265,18 +279,24 @@ if (apkButtons.length && apkModal && confirmApkDownload && cancelApkDownload) {
     }
     apkModal.classList.remove('show');
     apkModal.setAttribute('aria-hidden', 'true');
+    apkReturnFocus?.focus();
+    apkReturnFocus = null;
   });
 
   cancelApkDownload.addEventListener('click', () => {
     apkModal.classList.remove('show');
     apkModal.setAttribute('aria-hidden', 'true');
     pendingApkUrl = '';
+    apkReturnFocus?.focus();
+    apkReturnFocus = null;
   });
 
   apkModal.addEventListener('click', (event) => {
     if (event.target === apkModal) {
       apkModal.classList.remove('show');
       apkModal.setAttribute('aria-hidden', 'true');
+      apkReturnFocus?.focus();
+      apkReturnFocus = null;
     }
   });
 }
@@ -347,12 +367,14 @@ if (previewButtons.length && previewModal && previewModalTitle && closePreviewMo
   previewButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
       event.preventDefault();
+      previewReturnFocus = button;
       activePreviewKey = button.dataset.previewApp || 'careerBridge';
       previewModalTitle.textContent = button.dataset.previewTitle || previewCatalog[activePreviewKey].title;
       previewIndex = 0;
       updatePreviewStage();
       previewModal.classList.add('show');
       previewModal.setAttribute('aria-hidden', 'false');
+      closePreviewModal.focus();
       startPreviewRotation();
     });
   });
@@ -375,13 +397,13 @@ if (previewButtons.length && previewModal && previewModalTitle && closePreviewMo
     previewModal.classList.remove('show');
     previewModal.setAttribute('aria-hidden', 'true');
     stopPreviewRotation();
+    previewReturnFocus?.focus();
+    previewReturnFocus = null;
   });
 
   previewModal.addEventListener('click', (event) => {
     if (event.target === previewModal) {
-      previewModal.classList.remove('show');
-      previewModal.setAttribute('aria-hidden', 'true');
-      stopPreviewRotation();
+      closePreviewModal.click();
     }
   });
 
@@ -421,33 +443,79 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
-// 📧 EmailJS Integration
-(function() {
-  emailjs.init("KQgrkRjLOc7mphsTD"); 
-})();
-
 const contactForm = document.getElementById('contactForm');
 const feedbackModal = document.getElementById('feedbackModal');
 const closeFeedbackBtn = document.getElementById('closeFeedbackBtn');
 const feedbackTitle = document.getElementById('feedbackTitle');
 const feedbackMessage = document.getElementById('feedbackMessage');
 const feedbackIcon = document.getElementById('feedbackIcon');
+const opportunityInput = contactForm?.querySelector('input[name="opportunity_type"]');
+const opportunityButtons = contactForm?.querySelectorAll('.figma-pill') || [];
+let feedbackReturnFocus = null;
+
+if (window.emailjs) {
+  window.emailjs.init('KQgrkRjLOc7mphsTD');
+}
+
+opportunityButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    opportunityButtons.forEach((option) => {
+      const isSelected = option === button;
+      option.classList.toggle('active', isSelected);
+      option.setAttribute('aria-pressed', String(isSelected));
+    });
+
+    if (opportunityInput) {
+      opportunityInput.value = button.dataset.opportunity || button.textContent.trim();
+    }
+  });
+});
 
 if (contactForm && feedbackModal) {
-  closeFeedbackBtn.addEventListener('click', () => {
+  feedbackModal.addEventListener('transitionend', (event) => {
+    if (event.target === feedbackModal.querySelector('[role="dialog"]') && event.propertyName === 'opacity' && feedbackModal.classList.contains('show')) {
+      closeFeedbackBtn?.focus();
+    }
+  });
+
+  closeFeedbackBtn?.addEventListener('click', () => {
     feedbackModal.classList.remove('show');
     feedbackModal.setAttribute('aria-hidden', 'true');
+    feedbackReturnFocus?.focus();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && feedbackModal.classList.contains('show')) {
+      closeFeedbackBtn?.click();
+    }
   });
 
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
     const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.textContent;
+    if (!submitBtn) return;
+
+    const originalBtnText = submitBtn.textContent || 'Send message';
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
 
-    emailjs.sendForm("service_3hoxhp3", "template_037ylts", this)
+    if (!window.emailjs) {
+      feedbackIcon.classList.add('error');
+      feedbackIcon.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="15" x2="15" y2="9"></line></svg>';
+      feedbackTitle.textContent = 'Message not sent';
+      feedbackMessage.textContent = 'The email service did not load. Please email me directly at abdullahtariq.nns@gmail.com.';
+      feedbackModal.classList.add('show');
+      feedbackModal.setAttribute('aria-hidden', 'false');
+      feedbackReturnFocus = submitBtn;
+      closeFeedbackBtn?.focus();
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+      return;
+    }
+
+    Promise.resolve()
+      .then(() => window.emailjs.sendForm("service_3hoxhp3", "template_037ylts", this))
       .then(() => {
         feedbackIcon.classList.remove('error');
         feedbackIcon.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
@@ -455,22 +523,38 @@ if (contactForm && feedbackModal) {
         feedbackMessage.textContent = "Thank you for reaching out. I'll get back to you shortly.";
         feedbackModal.classList.add('show');
         feedbackModal.setAttribute('aria-hidden', 'false');
+        feedbackReturnFocus = submitBtn;
+        closeFeedbackBtn?.focus();
         
         this.reset();
-        submitBtn.textContent = originalBtnText;
-        submitBtn.disabled = false;
+        if (opportunityInput) {
+          opportunityInput.value = 'Junior role';
+        }
+        opportunityButtons.forEach((option) => {
+          const isSelected = option.dataset.opportunity === 'Junior role';
+          option.classList.toggle('active', isSelected);
+          option.setAttribute('aria-pressed', String(isSelected));
+        });
+        closeFeedbackBtn?.focus();
       })
       .catch((err) => {
         feedbackIcon.classList.add('error');
         feedbackIcon.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';
-        feedbackTitle.textContent = "Oops!";
-        feedbackMessage.textContent = "Something went wrong. Please try again.";
+        feedbackTitle.textContent = "Message not sent";
+        feedbackMessage.textContent = "Something went wrong. Please try again or email me directly at abdullahtariq.nns@gmail.com.";
         feedbackModal.classList.add('show');
         feedbackModal.setAttribute('aria-hidden', 'false');
+        feedbackReturnFocus = submitBtn;
+        feedbackModal.querySelector('[role="dialog"]')?.focus();
         
         console.error(err);
+      })
+      .finally(() => {
         submitBtn.textContent = originalBtnText;
         submitBtn.disabled = false;
+        if (feedbackModal.classList.contains('show')) {
+          closeFeedbackBtn?.focus();
+        }
       });
   });
 }
