@@ -1226,6 +1226,10 @@ body[data-theme='dark'] .theme-toggle {
 }
 
 @media (min-width: 701px) and (max-width: 900px) {
+  .hero {
+    padding-top: 0;
+  }
+
   .navbar {
     position: relative;
     flex-wrap: wrap;
